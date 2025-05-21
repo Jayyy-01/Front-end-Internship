@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Changer</title>
+</head>
+<body>
+  <p><h2>Click the below button to change the background colour</h2></p>
+  <button onclick="changeColor()">Change Background Color</button>
+
+  <script>
+    function changeColor() {
+      let color = Math.floor(Math.random() * 16777215).toString(16);
+      // Pad with zeros if less than 6 characters
+      color = color.padStart(6, '0');
+      document.body.style.backgroundColor = '#' + color;
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- TASK 4 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .todo-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .input-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        #task-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        #add-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        #add-btn:hover {
+            background-color: #45a049;
+        }
+        
+        #task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-text {
+            flex-grow: 1;
+        }
+        
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>My To-Do List</h1>
+        
+        <div class="input-container">
+            <input type="text" id="task-input" placeholder="Enter a new task...">
+            <button id="add-btn">Add Task</button>
+        </div>
+        
+        <ul id="task-list">
+            <!-- Tasks will be added here dynamically -->
+            <li class="empty-message">No tasks yet. Add one above!</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('task-input');
+            const addBtn = document.getElementById('add-btn');
+            const taskList = document.getElementById('task-list');
+            
+            // Add task when button is clicked
+            addBtn.addEventListener('click', addTask);
+            
+            // Add task when Enter key is pressed
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                
+                if (taskText) {
+                    // Remove empty message if it exists
+                    const emptyMessage = taskList.querySelector('.empty-message');
+                    if (emptyMessage) {
+                        taskList.removeChild(emptyMessage);
+                    }
+                    
+                    // Create new task item
+                    const taskItem = document.createElement('li');
+                    taskItem.className = 'task-item';
+                    
+                    const taskSpan = document.createElement('span');
+                    taskSpan.className = 'task-text';
+                    taskSpan.textContent = taskText;
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.addEventListener('click', function() {
+                        taskList.removeChild(taskItem);
+                        
+                        // Show empty message if no tasks left
+                        if (taskList.children.length === 0) {
+                            const newEmptyMessage = document.createElement('li');
+                            newEmptyMessage.className = 'empty-message';
+                            newEmptyMessage.textContent = 'No tasks yet. Add one above!';
+                            taskList.appendChild(newEmptyMessage);
+                        }
+                    });
+                    
+                    taskItem.appendChild(taskSpan);
+                    taskItem.appendChild(deleteBtn);
+                    taskList.appendChild(taskItem);
+                    
+                    // Clear input field
+                    taskInput.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
