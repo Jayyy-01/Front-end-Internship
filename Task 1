@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Webpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    h1 {
+      color: #0077cc;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jayasree P</h1>
+    <p>Hello! I'm a 21 year old Electronics and Communication Engineering student, passionate about embedded systems, AI, and coding. I'm a curious learner, team leader in tech events, and love blending creativity with technology to solve real world problems..</p>
+    <img src="https://www.shutterstock.com/image-vector/cute-cheerful-student-girl-jumping-600nw-2249150783.jpg" alt="Your Photo">
+  </div>
+</body>
+</html>
